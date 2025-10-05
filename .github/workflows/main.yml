@@ -1,4 +1,17 @@
-# On your local machine, in the repo folder
-git add .github/workflows/main.yml
-git commit -m "feat:add simple github action"
-git push origin main
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Run a simple test
+      run: echo "Hello, GitHub Actions!"
